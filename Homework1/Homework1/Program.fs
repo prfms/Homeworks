@@ -1,6 +1,6 @@
 ﻿let factorial x =
     let rec factorialAcc acc x= 
-        if x = 1 then acc
+        if x <= 1 then acc
         else factorialAcc (acc * x) (x - 1)
     factorialAcc 1 x
     
@@ -22,8 +22,8 @@ let reverse list =
 let generatePowers n m =
     let rec generatePowersAcc m pow acc = 
         if m = -1 then acc
-        else generatePowersAcc (m - 1) (pow * 2.0) (acc @ [pow])
-    generatePowersAcc m (2.0 ** n) []
+        else generatePowersAcc (m - 1) (pow * 2.0) (pow :: acc)
+    reverse (generatePowersAcc m (2.0 ** n) [])
     
 let findElement ls value = 
     let rec numPosition ls i = 
