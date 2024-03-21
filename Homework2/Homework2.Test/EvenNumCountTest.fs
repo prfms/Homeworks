@@ -1,4 +1,4 @@
-module Homework2.Test
+module Homework2.Test.EvenNumCountTest.fs
 open NUnit.Framework
 open FsCheck
 open EvenNumCount

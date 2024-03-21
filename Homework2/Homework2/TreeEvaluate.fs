@@ -1,14 +1,21 @@
-module TreeParser
+module TreeEvaluate
 
-type Expression =
-    | Number of int
-    | Add of Expression * Expression
-    | Multiply of Expression * Expression
-    | Subtract of Expression * Expression
-    | Divide of Expression * Expression
+type treeExpression =
+    | Number of float
+    | Add of treeExpression * treeExpression
+    | Multiply of treeExpression * treeExpression
+    | Subtract of treeExpression * treeExpression
+    | Divide of treeExpression * treeExpression
     
-type Tree =
-    | Tip
-    | Node of Expression * Tree * Tree
-
-let rec evaluateTree
+let rec evaluateTree tree =
+    match tree with
+    | Number n -> n
+    | Add(x,y) -> evaluateTree x + evaluateTree y
+    | Subtract(x,y) -> evaluateTree x - evaluateTree y
+    | Multiply(x,y) -> evaluateTree x * evaluateTree y
+    | Divide(x,y) -> try
+                         evaluateTree x / evaluateTree y
+                     with
+                         | :? System.DivideByZeroException -> "Division by zero"; infinity
+                    
+    
