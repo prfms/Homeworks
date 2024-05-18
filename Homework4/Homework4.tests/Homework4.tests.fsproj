@@ -16,6 +16,9 @@
         <PackageReference Include="NUnit3TestAdapter" Version="4.5.0"/>
         <PackageReference Include="NUnit.Analyzers" Version="4.0.1"/>
     </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Homework4\Homework4.fsproj" />
+    </ItemGroup>
 
     
 </Project>
