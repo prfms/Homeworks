@@ -8,6 +8,7 @@
     <ItemGroup>
         <Compile Include="PhoneHandbook.fs" />
         <Compile Include="Program.fs" />
+        <Compile Include="BracketChecker.fs" />
     </ItemGroup>
 
 </Project>

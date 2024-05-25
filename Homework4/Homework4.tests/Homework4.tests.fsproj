@@ -7,6 +7,7 @@
 
     <ItemGroup>
         <Compile Include="PhoneHandbookTests.fs" />
+        <Compile Include="BracketChecker.Test.fs" />
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="FsCheck" Version="2.16.6" />

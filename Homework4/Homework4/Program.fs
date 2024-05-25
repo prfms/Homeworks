@@ -1,5 +1,6 @@
 module Program
 open System
+open System.IO
 open PhoneHandbook
 let greetMessage = "Hi, it's a dictionary. That's what I can do:
     0. Exit.
@@ -10,6 +11,7 @@ let greetMessage = "Hi, it's a dictionary. That's what I can do:
     5. Save the data in the file.
     6. Read the data from the file."
     
+let handbook = []
 Console.WriteLine(greetMessage)    
 let addUserRecord () =
     printfn "Enter name:"
@@ -17,32 +19,33 @@ let addUserRecord () =
     printfn "Enter phone:"
     let phone = Console.ReadLine()
     let newRecord = { Name = name; Phone = phone }
-    let newHandbook = PhoneBook.addRecord handbook newRecord
+    let newHandbook = addRecord handbook newRecord
     printfn "Record added successfully."
 let findPhoneByName () =
     printfn "Enter name:"
     let name = Console.ReadLine()
-    let phones = PhoneBook.findPhoneByName name handbook
+    let phones = findPhoneByName name handbook
     phones |> List.iter (printfn "Phone: %s")
 
 let findNameByPhone () =
     printfn "Enter phone:"
     let phone = Console.ReadLine()
-    let names = PhoneBook.findNameByPhone phone handbook
+    let names = findNameByPhone phone handbook
     names |> List.iter (printfn "Name: %s")
 
 let printHandbook () =
-    PhoneBook.printHandbook handbook
+    printfn $"%s{printHandbook handbook}"
 
 let saveToFile () =
     printfn "Enter file name:"
     let fileName = Console.ReadLine()
-    PhoneBook.writeToFile handbook fileName
+    match writeToFile handbook fileName with
+    | None -> failwith "Writing to the file error"
 
 let readFromFile () =
     printfn "Enter file name:"
     let fileName = Console.ReadLine()
-    let newHandbook = PhoneBook.readFromFile fileName
+    let newHandbook = readFromFile fileName
     printfn "Data read from file successfully." 
 
 let parseUserInput userInput =
