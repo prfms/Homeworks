@@ -9,6 +9,7 @@
         <Compile Include="PhoneHandbook.fs" />
         <Compile Include="Program.fs" />
         <Compile Include="BracketChecker.fs" />
+        <Compile Include="PointFree.fs" />
     </ItemGroup>
 
 </Project>
