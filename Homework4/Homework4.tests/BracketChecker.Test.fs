@@ -24,4 +24,19 @@ let ``String with incorrect brackets should be incorrect``() =
     let string = "([{]})"
     bracketChecker string |> should equal false
 
+[<Test>]
+let ``Empty string should be correct``() =
+    let string = ""
+    bracketChecker string |> should equal true
+    
+[<Test>]
+let ``String with one opening bracket should be incorrect``() =
+    let string = "("
+    bracketChecker string |> should equal false
+    
+[<Test>]
+let ``String with one closing bracket should be incorrect``() =
+    let string = ")"
+    bracketChecker string |> should equal false
+    
     
