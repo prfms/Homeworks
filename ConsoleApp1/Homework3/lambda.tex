@@ -6,9 +6,12 @@
 \\ 1 задание
 $$
   \begin{CD}
-    ((\lambda a.(\lambda b.b\;b)\;(\lambda b.b\;b))\;b)\;(\lambda c.(c\;b))\;(\lambda a.a)) @>\beta>> (\lambda b.b\;b)\;(\lambda b.b\;b)\;(\lambda c.(c\;b))\;(\lambda a.a))@>\beta>>\\(\lambda b.b\;b)\;(\lambda b.b\;b)\;(\lambda a.a\;b)
-  \end{CD}
+    ((\lambda a.(\lambda b.b\;b)\;(\lambda b.b\;b))\;b)\;(\lambda c.(c\;b))\;(\lambda a.a)) @>\beta>> ((\lambda b.b\;b)\;(\lambda b.b\;b))\;(\lambda c.(c\;b)\;(\lambda a.a))
+  \end{CD}  
 $$
+\\Дальнейшие преобразования по нормальной стратегии не изменяют терма.
+\\По теореме Карри о нормализации, если у терма есть нормальная форма, то последовательное сокращение самого левого внешнего редэкса приводит к ней. В этом случае нормальная стратегия не привела к нормальной форме, значит ее нет.
+\\
 \\ 2 задание
 $$
 \begin{CD}
