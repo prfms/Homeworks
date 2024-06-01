@@ -29,14 +29,6 @@ let newVar s t =
             newVarRec s t (var + "'")
     newVarRec s t "a"
 
-let rec alphaConvert var newVar expression =
-    match expression with
-    | Variable(x) when x = var -> Variable(newVar)
-    | Abstraction(param, body) when param = var -> Abstraction(newVar, alphaConvert var newVar body)
-    | Abstraction(param, body) -> Abstraction(param, alphaConvert var newVar body)
-    | Application(func, arg) -> Application(alphaConvert var newVar func, alphaConvert var newVar arg)
-    | _ -> expression
-
 let rec substitute expr varName subExpr = 
     match expr with
     | Variable name -> if name = varName then subExpr else expr
