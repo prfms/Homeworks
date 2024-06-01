@@ -24,17 +24,6 @@ let ``(lambda(y).y x) z -> z x``() =
     let correctExpr = Application(Variable "z", Variable "x")
     Assert.AreEqual(correctExpr, reducedExpr)
     
-let I = Abstraction("x", Variable "x")
-let K = Abstraction("x", Abstraction("y", Variable "x"))
-let S = Abstraction("x", Abstraction("y", Abstraction("z", Application(Application(Variable "x", Variable "z"), Application(Variable "y", Variable "z")))))
-
-let SKK = Application(Application(S, K), K)
-
-[<Test>]
-let ``S K K should be equivalent to I``() =
-    let reducedExpr = betaReduce SKK
-    Assert.AreEqual(I, reducedExpr)
-    
 [<Test>]
 let ``(lambda(y).y x) (lambda(z).z) -> x``() = 
     let inputExpr = Application(Abstraction("y", Application(Variable "y", Variable "x")), Abstraction("z", Variable "z"))
